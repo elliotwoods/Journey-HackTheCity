@@ -1,0 +1,219 @@
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
+   <PATCH nodename="E:\projects files\Hack the City\structured light test\test2 - send to oF.v4p" systemname="test2 - send to oF" filename="E:\projects files\Hack the City\structured light test\test2 - send to oF.v4p">
+   <BOUNDS type="Window" left="8130" top="7860" width="9000" height="6000">
+   </BOUNDS>
+   <NODE systemname="Encode (Image.StructuredLight)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.OpenCV.dll" nodename="Encode (Image.StructuredLight)" componentmode="Hidden" id="0">
+   <BOUNDS type="Node" left="180" top="2340" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Frame" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Payload" visible="1">
+   </PIN>
+   <BOUNDS type="Box" left="180" top="2340">
+   </BOUNDS>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="TimingCircuit (OpenCV StructuredLight)" filename="%VVVV%\addonpack\lib\nodes\modules\Image\OpenCV\TimingCircuit (OpenCV StructuredLight).v4p" nodename="TimingCircuit (OpenCV StructuredLight)" componentmode="Hidden" id="1">
+   <BOUNDS type="Node" left="1620" top="1635" width="4680" height="270">
+   </BOUNDS>
+   <PIN pinname="Change" visible="1">
+   </PIN>
+   <PIN pinname="Reset" visible="1">
+   </PIN>
+   <PIN pinname="Frame" visible="1">
+   </PIN>
+   <PIN pinname="Run">
+   </PIN>
+   <PIN pinname="Stop">
+   </PIN>
+   <PIN pinname="Frame Count" visible="1">
+   </PIN>
+   <PIN pinname="Duration" slicecount="1" values="0.5">
+   </PIN>
+   <PIN pinname="Before Change" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="OSCEncoder (Network)" nodename="OSCEncoder (Network)" componentmode="Hidden" id="2">
+   <BOUNDS type="Node" left="1815" top="3540" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Address" slicecount="1" encoded="0" values="/capture">
+   </PIN>
+   <PIN pinname="OSCMessage" visible="1">
+   </PIN>
+   <PIN pinname="Type Tags" slicecount="1" encoded="0" values="i">
+   </PIN>
+   <PIN pinname="Arguments" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="UDP (Network Client)" nodename="UDP (Network Client)" componentmode="Hidden" id="3">
+   <BOUNDS type="Node" left="1830" top="4695" width="600" height="270">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Remote Port" slicecount="1" values="5588">
+   </PIN>
+   <PIN pinname="Do Send" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="2" srcpinname="OSCMessage" dstnodeid="3" dstpinname="Input">
+   </LINK>
+   <NODE systemname="OSCEncoder (Network)" nodename="OSCEncoder (Network)" componentmode="Hidden" id="5">
+   <BOUNDS type="Node" left="3915" top="3540" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Address" slicecount="1" encoded="0" values="/clear">
+   </PIN>
+   <PIN pinname="OSCMessage" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="UDP (Network Client)" nodename="UDP (Network Client)" componentmode="Hidden" id="4">
+   <BOUNDS type="Node" left="3930" top="4695" width="600" height="270">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Remote Port" slicecount="1" values="5588">
+   </PIN>
+   <PIN pinname="Do Send" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="5" srcpinname="OSCMessage" dstnodeid="4" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Reset" dstnodeid="4" dstpinname="Do Send" linkstyle="Bezier">
+   <LINKPOINT x="6225" y="3218">
+   </LINKPOINT>
+   <LINKPOINT x="4170" y="3368">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="AsString (Value)" nodename="AsString (Value)" componentmode="Hidden" id="6">
+   <BOUNDS type="Node" left="2790" top="3075" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="SubType" slicecount="1" values="|Integer (MinInt .. MaxInt)|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="6" srcpinname="Output" dstnodeid="2" dstpinname="Arguments">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Frame" dstnodeid="6" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Frame" dstnodeid="0" dstpinname="Frame" linkstyle="VHV">
+   <LINKPOINT x="2775" y="2108">
+   </LINKPOINT>
+   <LINKPOINT x="240" y="2108">
+   </LINKPOINT>
+   </LINK>
+   <NODE systemname="ImageQuad (OpenCV DX9)" filename="%VVVV%\addonpack\lib\nodes\modules\Image\OpenCV\ImageQuad (OpenCV DX9).v4p" nodename="ImageQuad (OpenCV DX9)" componentmode="Hidden" id="7">
+   <BOUNDS type="Node" left="165" top="2880" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Image" visible="1">
+   </PIN>
+   <PIN pinname="Layer" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="0" srcpinname="Output" dstnodeid="7" dstpinname="Image">
+   </LINK>
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="FullScreen" id="8">
+   <BOUNDS type="Node" left="150" top="3540" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="150" top="3540" width="2400" height="1800">
+   </BOUNDS>
+   <BOUNDS type="Window" left="29145" top="4845" width="6240" height="5010">
+   </BOUNDS>
+   <PIN pinname="Layers" visible="1">
+   </PIN>
+   <PIN pinname="Fullscreen Refresh Rate" slicecount="1" values="75">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="Layer" dstnodeid="8" dstpinname="Layers">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="9" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="1620" top="375" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="1620" top="375" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Run">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Run">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="10" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="3165" top="375" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3165" top="375" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Stop">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Stop">
+   </LINK>
+   <NODE systemname="Payload (Image.StructuredLight)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.OpenCV.dll" nodename="Payload (Image.StructuredLight)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="5580" top="690" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Balanced" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Frame Count" visible="1">
+   </PIN>
+   <PIN pinname="Payload" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="Frame Count" dstnodeid="1" dstpinname="Frame Count">
+   </LINK>
+   <LINK srcnodeid="11" srcpinname="Payload" dstnodeid="0" dstpinname="Payload" linkstyle="Bezier">
+   <LINKPOINT x="5580" y="1635">
+   </LINKPOINT>
+   <LINKPOINT x="555" y="1635">
+   </LINKPOINT>
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="12" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="3795" top="2340" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3795" top="2340" width="795" height="240">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="1" srcpinname="Frame" dstnodeid="12" dstpinname="Y Input Value" linkstyle="VHV">
+   <LINKPOINT x="2835" y="2108">
+   </LINKPOINT>
+   <LINKPOINT x="3795" y="2108">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Change" dstnodeid="3" dstpinname="Do Send" linkstyle="Bezier">
+   <LINKPOINT x="5085" y="3285">
+   </LINKPOINT>
+   <LINKPOINT x="2070" y="3285">
+   </LINKPOINT>
+   </LINK>
+   </PATCH>
