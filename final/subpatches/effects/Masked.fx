@@ -80,6 +80,7 @@ float4 PSMasked(vs2ps In): COLOR
     float4 col = tex2D(Samp, In.TexCd) * cAmb;
 	col.a = length(tex2D(SampM, In.TexCdRaw).rgb) / length(float3(1,1,1));
     col.a *= Alpha;
+	
     return col;
 }
 

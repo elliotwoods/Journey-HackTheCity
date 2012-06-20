@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
    <PATCH nodename="C:\Journey-HackTheCity\final\subpatches\oFcomms.v4p" systemname="oFcomms" filename="C:\Journey-HackTheCity\final\subpatches\oFcomms.v4p">
-   <BOUNDS type="Window" left="8520" top="3735" width="17085" height="10785">
+   <BOUNDS type="Window" left="3420" top="4020" width="14070" height="8385">
    </BOUNDS>
    <NODE systemname="Payload (Image.StructuredLight)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.OpenCV.dll" nodename="Payload (Image.StructuredLight)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="1785" top="1500" width="100" height="100">
@@ -87,7 +87,7 @@
    </PIN>
    </NODE>
    <NODE systemname="ImageLoad (OpenCV)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.OpenCV.dll" nodename="ImageLoad (OpenCV)" componentmode="Hidden" id="19">
-   <BOUNDS type="Node" left="10095" top="3075" width="100" height="100">
+   <BOUNDS type="Node" left="10095" top="3375" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -95,7 +95,7 @@
    </PIN>
    <PIN pinname="Reload" visible="1">
    </PIN>
-   <BOUNDS type="Box" left="10095" top="3075">
+   <BOUNDS type="Box" left="10095" top="3375">
    </BOUNDS>
    <PIN pinname="Enabled" slicecount="1" values="1">
    </PIN>
@@ -305,6 +305,8 @@
    </PIN>
    <PIN pinname="Match Count" visible="1">
    </PIN>
+   <PIN pinname="OnReceive" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="34" srcpinname="Output" dstnodeid="82" dstpinname="Input" linkstyle="VHV">
    <LINKPOINT x="6960" y="1583">
@@ -323,9 +325,9 @@
    <LINK srcnodeid="27" srcpinname="Layer" dstnodeid="86" dstpinname="Input Node">
    </LINK>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="87" systemname="IOBox (Node)">
-   <BOUNDS type="Node" left="10095" top="3705" width="0" height="0">
+   <BOUNDS type="Node" left="10095" top="4005" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="10095" top="3705" width="795" height="240">
+   <BOUNDS type="Box" left="10095" top="4005" width="795" height="240">
    </BOUNDS>
    <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Output">
    </PIN>
@@ -383,7 +385,7 @@
    </PIN>
    </NODE>
    <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="91">
-   <BOUNDS type="Node" left="10515" top="2580" width="100" height="100">
+   <BOUNDS type="Node" left="10515" top="2880" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input 1" visible="1">
    </PIN>
@@ -392,11 +394,35 @@
    <PIN pinname="Input 2" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="82" srcpinname="Match Count" dstnodeid="91" dstpinname="Input 1" linkstyle="VHV">
-   <LINKPOINT x="8910" y="2333">
+   <LINK srcnodeid="82" srcpinname="OnReceive" dstnodeid="91" dstpinname="Input 1" linkstyle="Bezier">
+   <LINKPOINT x="9300" y="2483">
    </LINKPOINT>
-   <LINKPOINT x="10515" y="2333">
+   <LINKPOINT x="10515" y="2483">
    </LINKPOINT>
+   </LINK>
+   <NODE systemname="MonoFlop (Animation)" nodename="MonoFlop (Animation)" componentmode="Hidden" id="94">
+   <BOUNDS type="Node" left="8580" top="2670" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Set" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="82" srcpinname="OnReceive" dstnodeid="94" dstpinname="Set">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="95" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Node" left="8580" top="3390" width="0" height="0">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8580" top="3390" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="94" srcpinname="Output" dstnodeid="95" dstpinname="Y Input Value">
    </LINK>
    <LINK srcnodeid="91" srcpinname="Output" dstnodeid="19" dstpinname="Reload">
    </LINK>

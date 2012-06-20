@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
    <PATCH nodename="C:\Journey-HackTheCity\final\main.v4p" systemname="main" filename="C:\Journey-HackTheCity\final\main.v4p">
-   <BOUNDS type="Window" left="5190" top="3765" width="9000" height="9510">
+   <BOUNDS type="Window" left="5190" top="3765" width="6735" height="6990">
    </BOUNDS>
    <NODE systemname="oFcomms" filename="subpatches\oFcomms.v4p" nodename="subpatches\oFcomms.v4p" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="2970" top="2370" width="2355" height="270">
@@ -78,15 +78,17 @@
    </NODE>
    <LINK srcnodeid="3" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Run">
    </LINK>
-   <NODE systemname="effects" filename="subpatches\effects.v4p" nodename="subpatches\effects.v4p" componentmode="InAWindow" id="4">
+   <NODE systemname="effects" filename="subpatches\effects.v4p" nodename="subpatches\effects.v4p" componentmode="Hidden" id="4">
    <BOUNDS type="Node" left="1875" top="3735" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
    <PIN pinname="Image" visible="1">
    </PIN>
-   <BOUNDS type="Window" left="15870" top="255" width="9000" height="14385">
+   <BOUNDS type="Window" left="15870" top="255" width="10500" height="14385">
    </BOUNDS>
+   <PIN pinname="Scanning" visible="1">
+   </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="5" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Node" left="2190" top="2370" width="0" height="0">
@@ -136,6 +138,12 @@
    <LINKPOINT x="5265" y="3173">
    </LINKPOINT>
    <LINKPOINT x="1935" y="3173">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="4" dstpinname="Scanning" linkstyle="Bezier">
+   <LINKPOINT x="2250" y="3293">
+   </LINKPOINT>
+   <LINKPOINT x="2670" y="3293">
    </LINKPOINT>
    </LINK>
    </PATCH>
