@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
-   <PATCH nodename="E:\projects files\Hack the City\3way calib\main.v4p" systemname="main" filename="E:\projects files\Hack the City\3way calib\main.v4p">
-   <BOUNDS type="Window" left="1980" top="1800" width="19410" height="11940">
+   <PATCH nodename="C:\Journey-HackTheCity\3way calib\main.v4p" systemname="main" filename="E:\projects files\Hack the City\3way calib\main.v4p">
+   <BOUNDS type="Window" left="1890" top="450" width="21045" height="15150">
    </BOUNDS>
    <NODE systemname="ListDevices (OpenCV DirectShow)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.VideoInput.dll" nodename="ListDevices (OpenCV DirectShow)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="450" top="1815" width="100" height="100">
@@ -21,6 +21,8 @@
    </PIN>
    <PIN pinname="Found At Position" visible="1">
    </PIN>
+   <PIN pinname="Input Index" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="0" srcpinname="Device name" dstnodeid="1" dstpinname="Input">
    </LINK>
@@ -35,13 +37,13 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <PIN pinname="Enabled">
+   <PIN pinname="Enabled" visible="1">
    </PIN>
    <PIN pinname="Properties" visible="1">
    </PIN>
+   <PIN pinname="Show Settings" slicecount="1" values="0">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="1" srcpinname="Found At Position" dstnodeid="2" dstpinname="Device ID">
-   </LINK>
    <NODE systemname="ImageQuad (OpenCV DX9)" filename="%VVVV%\addonpack\lib\nodes\modules\Image\OpenCV\ImageQuad (OpenCV DX9).v4p" nodename="ImageQuad (OpenCV DX9)" componentmode="Hidden" id="3">
    <BOUNDS type="Node" left="1455" top="3675" width="100" height="100">
    </BOUNDS>
@@ -85,9 +87,9 @@
    </PIN>
    <PIN pinname="X Input Value" slicecount="1" values="1">
    </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="2" dstpinname="Enabled">
-   </LINK>
    <NODE systemname="CaptureProperty (OpenCV DirectShow)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.VideoInput.dll" nodename="CaptureProperty (OpenCV DirectShow)" componentmode="Hidden" id="6">
    <BOUNDS type="Node" left="4110" top="1815" width="2895" height="270">
    </BOUNDS>
@@ -123,7 +125,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="6945" top="270" width="780" height="1290">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="5" values="0.23,0.06,0,0,0">
+   <PIN pinname="Y Input Value" slicecount="5" values="0.23,0.17,0,0,0">
    </PIN>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -197,7 +199,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="13035" top="10560" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="31245" top="3855" width="6240" height="5010">
+   <BOUNDS type="Window" left="-13650" top="4290" width="6240" height="5010">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -209,7 +211,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="11925" top="8145" width="795" height="480">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" values="1024,768">
+   <PIN pinname="Y Input Value" slicecount="2" values="1280,800">
    </PIN>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -330,16 +332,18 @@
    <PIN pinname="Size" slicecount="1" values="14">
    </PIN>
    </NODE>
-   <NODE systemname="WaitForCalm (Animation)" filename="%VVVV%\addonpack\lib\nodes\modules\Animation\WaitForCalm (Animation).v4p" nodename="WaitForCalm (Animation)" componentmode="Hidden" id="26">
+   <NODE systemname="WaitForCalm (Animation)" filename="%VVVV%\addonpack\lib\nodes\modules\Animation\WaitForCalm (Animation).v4p" nodename="WaitForCalm (Animation)" componentmode="InAWindow" id="26" stayontop="0">
    <BOUNDS type="Node" left="2415" top="9330" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <BOUNDS type="Window" left="5100" top="5550" width="5955" height="8835">
+   <BOUNDS type="Window" left="960" top="7995" width="5955" height="8835">
    </BOUNDS>
-   <PIN pinname="Maximum" slicecount="1" values="90">
+   <PIN pinname="Maximum" slicecount="1" values="30">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="0">
    </PIN>
    </NODE>
    <LINK srcnodeid="20" srcpinname="PositionXY" dstnodeid="26" dstpinname="Input" linkstyle="VHV">
@@ -382,18 +386,20 @@
    </NODE>
    <LINK srcnodeid="26" srcpinname="Output" dstnodeid="28" dstpinname="Input 1">
    </LINK>
-   <NODE systemname="WaitForCalm (Animation)" filename="%VVVV%\addonpack\lib\nodes\modules\Animation\WaitForCalm (Animation).v4p" nodename="WaitForCalm (Animation)" componentmode="Hidden" id="29">
+   <NODE systemname="WaitForCalm (Animation)" filename="%VVVV%\addonpack\lib\nodes\modules\Animation\WaitForCalm (Animation).v4p" nodename="WaitForCalm (Animation)" componentmode="Hidden" id="29" stayontop="0">
    <BOUNDS type="Node" left="9765" top="9330" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <BOUNDS type="Window" left="5100" top="5550" width="6840" height="8835">
+   <BOUNDS type="Window" left="13125" top="5025" width="6840" height="8835">
    </BOUNDS>
    <PIN pinname="Minimum" slicecount="1" values="0">
    </PIN>
    <PIN pinname="Duration" slicecount="1" values="0.5">
+   </PIN>
+   <PIN pinname="Maximum" slicecount="1" values="10">
    </PIN>
    </NODE>
    <LINK srcnodeid="19" srcpinname="Output" dstnodeid="29" dstpinname="Input" linkstyle="VHV">
@@ -486,6 +492,8 @@
    <PIN pinname="Layer" visible="1">
    </PIN>
    <PIN pinname="Image PointsXY" visible="1">
+   </PIN>
+   <PIN pinname="Image " visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="37" srcpinname="Layer" dstnodeid="36" dstpinname="Layer 2">
@@ -589,7 +597,7 @@
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="42" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Node" left="10395" top="12795" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="10395" top="12795" width="795" height="240">
+   <BOUNDS type="Box" left="10395" top="12795" width="870" height="585">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -600,6 +608,8 @@
    <PIN pinname="Y Input Value" visible="1">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Count">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="24">
    </PIN>
    </NODE>
    <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="43">
@@ -687,7 +697,7 @@
    <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="48" dstpinname="ResolutionXY" hiddenwhenlocked="1">
    </LINK>
    <NODE systemname="CalibrateCamera (OpenCV)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.OpenCV.dll" nodename="CalibrateCamera (OpenCV)" componentmode="Hidden" id="49">
-   <BOUNDS type="Node" left="3150" top="13200" width="100" height="100">
+   <BOUNDS type="Node" left="3645" top="13200" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Intrinsics" visible="1">
    </PIN>
@@ -703,19 +713,19 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="27" srcpinname="Output" dstnodeid="49" dstpinname="Image PointsXY" linkstyle="VHV">
-   <LINKPOINT x="1185" y="12623">
+   <LINKPOINT x="1350" y="12623">
    </LINKPOINT>
-   <LINKPOINT x="3030" y="12773">
+   <LINKPOINT x="3360" y="12773">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="39" srcpinname="Y Output Value" dstnodeid="49" dstpinname="ResolutionXY" linkstyle="Bezier" hiddenwhenlocked="1">
-   <LINKPOINT x="1770" y="7575">
+   <LINKPOINT x="1935" y="7575">
    </LINKPOINT>
-   <LINKPOINT x="3450" y="7875">
+   <LINKPOINT x="3780" y="7875">
    </LINKPOINT>
    </LINK>
    <NODE systemname="BoardObjectPoints (OpenCV)" filename="%VVVV%\addonpack\lib\nodes\modules\Image\OpenCV\BoardObjectPoints (OpenCV).v4p" nodename="BoardObjectPoints (OpenCV)" componentmode="Hidden" id="50">
-   <BOUNDS type="Node" left="3345" top="12525" width="100" height="100">
+   <BOUNDS type="Node" left="3885" top="12525" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Object XYZ" visible="1">
    </PIN>
@@ -757,7 +767,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="13905" top="8850" width="795" height="240">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0.1">
+   <PIN pinname="Y Input Value" slicecount="1" values="0.3">
    </PIN>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -767,9 +777,9 @@
    <LINK srcnodeid="55" srcpinname="Y Output Value" dstnodeid="53" dstpinname="Input 2">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="56" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="11940" top="11370" width="810" height="270">
+   <BOUNDS type="Node" left="12540" top="11370" width="810" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="11940" top="11370" width="4110" height="1140">
+   <BOUNDS type="Box" left="12540" top="11370" width="4110" height="1140">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" encoded="0" values="|//stage 1&cr;&lf;calibrate camera to physical chessboard (10x7::2.5cm)&cr;&lf;//stage 2&cr;&lf;calibrate camera to kinect points&cr;&lf;calibrate projector to kinect points|">
    </PIN>
@@ -811,9 +821,9 @@
    </PIN>
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
+   <PIN pinname="X Input Value" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="Y Input Value" slicecount="1" values="1">
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
    </PIN>
    </NODE>
    <NODE systemname="Switch (Value Input)" nodename="Switch (Value Input)" componentmode="Hidden" id="59">
@@ -836,8 +846,6 @@
    </LINK>
    <LINK srcnodeid="31" srcpinname="Up Edge" dstnodeid="27" dstpinname="Insert">
    </LINK>
-   <LINK srcnodeid="59" srcpinname="Output" dstnodeid="31" dstpinname="Input">
-   </LINK>
    <LINK srcnodeid="28" srcpinname="Output" dstnodeid="59" dstpinname="Input 2">
    </LINK>
    <LINK srcnodeid="26" srcpinname="Output" dstnodeid="59" dstpinname="Input 1" linkstyle="Bezier">
@@ -858,18 +866,12 @@
    <PIN pinname="Up Edge" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="28" srcpinname="Output" dstnodeid="61" dstpinname="Input" linkstyle="VHV">
-   <LINKPOINT x="2430" y="10350">
-   </LINKPOINT>
-   <LINKPOINT x="9450" y="10350">
-   </LINKPOINT>
-   </LINK>
    <LINK srcnodeid="61" srcpinname="Up Edge" dstnodeid="30" dstpinname="Insert">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="63" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Node" left="1815" top="12795" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="1815" top="12795" width="795" height="240">
+   <BOUNDS type="Box" left="1815" top="12795" width="855" height="600">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -880,6 +882,8 @@
    <PIN pinname="Y Input Value" visible="1">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Count">
+   </PIN>
+   <PIN pinname="Size" slicecount="1" values="24">
    </PIN>
    </NODE>
    <NODE systemname="Count (Value)" nodename="Count (Value)" componentmode="Hidden" id="62">
@@ -899,9 +903,9 @@
    </LINKPOINT>
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="64" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Node" left="3930" top="13755" width="0" height="0">
+   <BOUNDS type="Node" left="4425" top="13755" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="3930" top="13755" width="795" height="240">
+   <BOUNDS type="Box" left="4425" top="13755" width="795" height="240">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
@@ -921,7 +925,7 @@
    </LINKPOINT>
    </LINK>
    <NODE systemname="TogEdge (Animation)" nodename="TogEdge (Animation)" componentmode="Hidden" id="65">
-   <BOUNDS type="Node" left="4350" top="12840" width="100" height="100">
+   <BOUNDS type="Node" left="4845" top="12840" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Up Edge" visible="1">
    </PIN>
@@ -931,9 +935,9 @@
    <LINK srcnodeid="65" srcpinname="Up Edge" dstnodeid="49" dstpinname="Do">
    </LINK>
    <LINK srcnodeid="58" srcpinname="Y Output Value" dstnodeid="65" dstpinname="Input" linkstyle="Bezier">
-   <LINKPOINT x="6225" y="11048">
+   <LINKPOINT x="6390" y="11048">
    </LINKPOINT>
-   <LINKPOINT x="4275" y="11048">
+   <LINKPOINT x="4605" y="11048">
    </LINKPOINT>
    </LINK>
    <NODE systemname="Chessboard (OpenCV DX9 Advanced)" filename="%VVVV%\addonpack\lib\nodes\modules\Image\OpenCV\Chessboard (OpenCV DX9 Advanced).v4p" nodename="Chessboard (OpenCV DX9 Advanced)" componentmode="Hidden" id="15">
@@ -967,7 +971,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="3555" top="15465" width="795" height="240">
    </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
@@ -975,7 +979,7 @@
    <LINK srcnodeid="48" srcpinname="Reprojection Error" dstnodeid="66" dstpinname="Y Input Value">
    </LINK>
    <NODE systemname="SelectNonZero" filename="Subpatches\SelectNonZero.v4p" nodename="Subpatches\SelectNonZero.v4p" componentmode="Hidden" id="67">
-   <BOUNDS type="Node" left="1005" top="14325" width="100" height="100">
+   <BOUNDS type="Node" left="1005" top="14325" width="1665" height="270">
    </BOUNDS>
    <PIN pinname="Object points" visible="1">
    </PIN>
@@ -1030,7 +1034,7 @@
    <PIN pinname="Color" slicecount="1" values="|1.00000,1.00000,1.00000,1.00000|">
    </PIN>
    </NODE>
-   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="70" stayontop="0">
+   <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="Hidden" id="70" stayontop="0">
    <BOUNDS type="Node" left="765" top="18615" width="100" height="100">
    </BOUNDS>
    <BOUNDS type="Box" left="765" top="18615" width="2400" height="1800">
@@ -1041,13 +1045,13 @@
    </PIN>
    <PIN pinname="Transformations Index" visible="-1" pintype="Input" slicecount="1" values="-1">
    </PIN>
-   <PIN pinname="Viewport" visible="1" pintype="Input" slicecount="1" values="||">
+   <PIN pinname="Viewport" visible="1" pintype="Input" slicecount="4" values=",,,">
    </PIN>
    <PIN pinname="Projection" visible="1">
    </PIN>
    <PIN pinname="View" visible="1">
    </PIN>
-   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="3">
+   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="NONE">
    </PIN>
    <PIN pinname="Windowed Depthbuffer Format" slicecount="1" values="D24X8">
    </PIN>
@@ -1144,8 +1148,6 @@
    <PIN pinname="Input 1" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="78" srcpinname="Output 1" dstnodeid="41" dstpinname="Y Input Value">
-   </LINK>
    <LINK srcnodeid="68" srcpinname="Output" dstnodeid="69" dstpinname="Projection">
    </LINK>
    <NODE systemname="Change (Animation)" nodename="Change (Animation)" componentmode="Hidden" id="79">
@@ -1189,7 +1191,7 @@
    </PIN>
    </NODE>
    <NODE systemname="SelectNonZero" filename="Subpatches\SelectNonZero.v4p" nodename="Subpatches\SelectNonZero.v4p" componentmode="Hidden" id="80">
-   <BOUNDS type="Node" left="11955" top="14325" width="100" height="100">
+   <BOUNDS type="Node" left="11955" top="14325" width="1620" height="270">
    </BOUNDS>
    <PIN pinname="Object points" visible="1">
    </PIN>
@@ -1233,9 +1235,9 @@
    </BOUNDS>
    <BOUNDS type="Box" left="15765" top="15405" width="795" height="240">
    </BOUNDS>
-   <PIN pinname="Default" slicecount="1" values="||" encoded="0">
+   <PIN pinname="Default" slicecount="1" encoded="0" values="||">
    </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||" encoded="0">
+   <PIN pinname="File Mask" slicecount="1" encoded="0" values="||">
    </PIN>
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
@@ -1253,7 +1255,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="14505" top="15420" width="795" height="240">
    </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
@@ -1307,13 +1309,65 @@
    <LINK srcnodeid="48" srcpinname="Projection" dstnodeid="68" dstpinname="Intrinsics">
    </LINK>
    <NODE nodename="IOBox (Enumerations)" componentmode="InABox" id="90" systemname="IOBox (Enumerations)">
-   <BOUNDS type="Node" left="5340" top="13530" width="0" height="0">
+   <BOUNDS type="Node" left="5940" top="13530" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Box" left="5340" top="13530" width="1590" height="240">
+   <BOUNDS type="Box" left="5940" top="13530" width="2955" height="1080">
    </BOUNDS>
    <PIN pinname="Input Enum" slicecount="5" values="CV_CALIB_USE_INTRINSIC_GUESS,CV_CALIB_FIX_ASPECT_RATIO,CV_CALIB_FIX_PRINCIPAL_POINT,CV_CALIB_FIX_FOCAL_LENGTH,CV_CALIB_USE_INTRINSIC_GUESS">
    </PIN>
+   <PIN pinname="Rows" slicecount="1" values="5">
+   </PIN>
    </NODE>
-   <LINK srcnodeid="90" srcpinname="Output Enum" dstnodeid="48" dstpinname="Flags">
+   <LINK srcnodeid="90" srcpinname="Output Enum" dstnodeid="48" dstpinname="Flags" linkstyle="VHV">
+   <LINKPOINT x="5740" y="14768">
+   </LINKPOINT>
+   <LINKPOINT x="3560" y="14768">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="13" srcpinname="PositionXY" dstnodeid="37" dstpinname="Image ">
+   </LINK>
+   <LINK srcnodeid="1" srcpinname="Input Index" dstnodeid="2" dstpinname="Device ID" linkstyle="VHV">
+   <LINKPOINT x="705" y="2805">
+   </LINKPOINT>
+   <LINKPOINT x="1005" y="2805">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="2" dstpinname="Enabled">
+   </LINK>
+   <NODE systemname="IOBox (Value Advanced)" nodename="IOBox (Value Advanced)" componentmode="InABox" id="91">
+   <BOUNDS type="Node" left="3045" top="10530" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3045" top="10530" width="480" height="480">
+   </BOUNDS>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   </PIN>
+   </NODE>
+   <NODE systemname="Intrinsics (OpenCV Split)" filename="%VVVV%\addonpack\lib\nodes\plugins\VVVV.Nodes.OpenCV.dll" nodename="Intrinsics (OpenCV Split)" componentmode="Hidden" id="92">
+   <BOUNDS type="Node" left="8145" top="15285" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Intrinsics" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="49" srcpinname="Intrinsics" dstnodeid="92" dstpinname="Intrinsics">
+   </LINK>
+   <LINK srcnodeid="59" srcpinname="Output" dstnodeid="31" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Output" dstnodeid="61" dstpinname="Input" linkstyle="VHV">
+   <LINKPOINT x="2460" y="10463">
+   </LINKPOINT>
+   <LINKPOINT x="9420" y="10463">
+   </LINKPOINT>
+   </LINK>
+   <LINK srcnodeid="78" srcpinname="Output 1" dstnodeid="41" dstpinname="Y Input Value">
+   <LINKPOINT x="10410" y="10635">
+   </LINKPOINT>
    </LINK>
    </PATCH>

@@ -1,0 +1,5 @@
+[l] = load dataset
+[t] = triangulate
+[s] = seperate slides
+[Arrow keys] = rotate camera and re-triangulate
+[c] = toggle cursor
