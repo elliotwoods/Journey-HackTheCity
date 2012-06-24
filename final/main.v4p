@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45alpha28.dtd" >
    <PATCH nodename="C:\Journey-HackTheCity\final\main.v4p" systemname="main" filename="C:\Journey-HackTheCity\final\main.v4p">
-   <BOUNDS type="Window" left="5190" top="3765" width="6735" height="6990">
+   <BOUNDS type="Window" left="9780" top="4410" width="6735" height="6990">
    </BOUNDS>
    <NODE systemname="oFcomms" filename="subpatches\oFcomms.v4p" nodename="subpatches\oFcomms.v4p" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="2970" top="2370" width="2355" height="270">
@@ -17,7 +17,7 @@
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
-   <BOUNDS type="Window" left="8520" top="3735" width="17085" height="10785">
+   <BOUNDS type="Window" left="3420" top="4020" width="14070" height="8385">
    </BOUNDS>
    </NODE>
    <NODE systemname="SL-timing" filename="subpatches\SL-timing.v4p" componentmode="Hidden" id="1" nodename="subpatches\SL-timing.v4p">
@@ -45,13 +45,15 @@
    <LINK srcnodeid="1" srcpinname="Reset" dstnodeid="0" dstpinname="Reset">
    </LINK>
    <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="FullScreen" id="2">
-   <BOUNDS type="Node" left="795" top="5295" width="100" height="100">
+   <BOUNDS type="Node" left="795" top="5745" width="3525" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="795" top="5295" width="2400" height="1800">
+   <BOUNDS type="Box" left="795" top="5745" width="2400" height="1800">
    </BOUNDS>
    <BOUNDS type="Window" left="-11865" top="7365" width="6240" height="5010">
    </BOUNDS>
    <PIN pinname="Layers" visible="1" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Fullscreen" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="0" srcpinname="Received" dstnodeid="1" dstpinname="Received">
@@ -61,9 +63,9 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2205" top="690" width="480" height="480">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" values="0">
+   <PIN pinname="Y Input Value" visible="1">
    </PIN>
-   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
@@ -73,7 +75,7 @@
    </PIN>
    <PIN pinname="X Input Value" slicecount="1" values="0">
    </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Run" encoded="0">
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Run">
    </PIN>
    </NODE>
    <LINK srcnodeid="3" srcpinname="Y Output Value" dstnodeid="1" dstpinname="Run">
@@ -95,7 +97,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="2190" top="2370" width="480" height="480">
    </BOUNDS>
-   <PIN pinname="Units" slicecount="1" values="||" encoded="0">
+   <PIN pinname="Units" slicecount="1" encoded="0" values="||">
    </PIN>
    <PIN pinname="Precision" slicecount="1" values="4">
    </PIN>
@@ -103,7 +105,7 @@
    </PIN>
    <PIN pinname="Behavior" slicecount="1" values="Toggle">
    </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Scanning" encoded="0">
+   <PIN pinname="Descriptive Name" slicecount="1" encoded="0" values="Scanning">
    </PIN>
    <PIN pinname="Y Output Value" visible="1">
    </PIN>
@@ -145,5 +147,95 @@
    </LINKPOINT>
    <LINKPOINT x="2670" y="3293">
    </LINKPOINT>
+   </LINK>
+   <NODE systemname="RS232 (Devices)" nodename="RS232 (Devices)" componentmode="Hidden" id="7">
+   <BOUNDS type="Node" left="1485" top="0" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="On Data" visible="1">
+   </PIN>
+   <PIN pinname="ComPort" slicecount="1" values="COM3">
+   </PIN>
+   <PIN pinname="Enabled" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="ShellExecute (Windows)" nodename="ShellExecute (Windows)" componentmode="Hidden" id="8">
+   <BOUNDS type="Node" left="4050" top="1200" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="File" slicecount="1" encoded="0" values="..\..\openFrameworks\apps\Journey2\7_final\bin\Example-CameraTest.exe">
+   </PIN>
+   <PIN pinname="Show Window" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Do Execute" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="9">
+   <BOUNDS type="Node" left="4995" top="675" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="9" srcpinname="Bang" dstnodeid="8" dstpinname="Do Execute">
+   </LINK>
+   <NODE systemname="Keyboard (System Global)" nodename="Keyboard (System Global)" componentmode="Hidden" id="10">
+   <BOUNDS type="Node" left="3105" top="0" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Keyboard Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="KeyMatch (String)" nodename="KeyMatch (String)" componentmode="Hidden" id="11">
+   <BOUNDS type="Node" left="3120" top="360" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Key Match" slicecount="1" encoded="0" values="|&lt;SPACE&gt;&cr;&lf;|">
+   </PIN>
+   <PIN pinname="&lt;SPACE&gt; Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="10" srcpinname="Keyboard Output" dstnodeid="11" dstpinname="Input">
+   </LINK>
+   <NODE systemname="TogEdge (Animation)" nodename="TogEdge (Animation)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="3120" top="705" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input" visible="1">
+   </PIN>
+   <PIN pinname="Up Edge" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="11" srcpinname="&lt;SPACE&gt; Output" dstnodeid="12" dstpinname="Input">
+   </LINK>
+   <NODE systemname="OR (Boolean)" nodename="OR (Boolean)" componentmode="Hidden" id="13">
+   <BOUNDS type="Node" left="2760" top="1125" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Input 1" visible="1">
+   </PIN>
+   <PIN pinname="Input 2" visible="1">
+   </PIN>
+   <PIN pinname="Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="7" srcpinname="On Data" dstnodeid="13" dstpinname="Input 1">
+   </LINK>
+   <LINK srcnodeid="12" srcpinname="Up Edge" dstnodeid="13" dstpinname="Input 2">
+   </LINK>
+   <LINK srcnodeid="13" srcpinname="Output" dstnodeid="3" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="OnOpen (VVVV)" nodename="OnOpen (VVVV)" componentmode="Hidden" id="14">
+   <BOUNDS type="Node" left="1905" top="4830" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Bang" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="MonoFlop (Animation)" nodename="MonoFlop (Animation)" componentmode="Hidden" id="15">
+   <BOUNDS type="Node" left="1890" top="5340" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Set" visible="1">
+   </PIN>
+   <PIN pinname="Inverse Output" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="14" srcpinname="Bang" dstnodeid="15" dstpinname="Set">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Inverse Output" dstnodeid="2" dstpinname="Fullscreen">
    </LINK>
    </PATCH>
